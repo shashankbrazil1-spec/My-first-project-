@@ -1,147 +1,714 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Sri Lakshmi Cement & Sand Shop</title>  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-Create a complete, professional, modern, mobile-friendly website for a local construction-materials business called Sri Lakshmi Cement & Sand Shop in Nizamabad, Telangana, India.
+    html {
+      scroll-behavior: smooth;
+    }
 
-IMPORTANT:
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f7f5;
+      color: #1d1d1b;
+      line-height: 1.6;
+    }
 
-- Generate the ENTIRE website in a SINGLE "index.html" file.
-- Put all CSS inside a "<style>" tag in the same HTML file.
-- Do not create separate CSS, JavaScript, or other files.
-- The website must work immediately when I upload "index.html" to GitHub Pages.
-- Do not use placeholder text such as "Lorem ipsum".
-- Make the design polished and professional, not like a basic HTML school project.
-- Make it responsive for phones, tablets, and computers.
-- Use clean HTML5 and modern CSS.
-- Use subtle animations and hover effects.
-- Do not require a backend.
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-BUSINESS:
-Name: Sri Lakshmi Cement & Sand Shop
-Location: Bodhan Road, Nizamabad, Telangana, India
-Business type: Construction materials supplier
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
 
-PRODUCTS:
+    /* HEADER */
 
-- Cement
-- Sand
-- Bricks
-- Construction materials
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #e5e5e5;
+      backdrop-filter: blur(10px);
+    }
 
-WEBSITE STRUCTURE:
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-1. NAVIGATION BAR
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
 
-- Business name/logo: Sri Lakshmi Cement & Sand Shop
-- Navigation links:
-  Home
-  Products
-  About
-  Contact
-- Mobile-friendly navigation
+    .logo span {
+      display: block;
+      font-size: 11px;
+      color: #777;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
 
-2. HERO SECTION
-   Create an attractive hero section with:
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
 
-- Large heading: "Sri Lakshmi Cement & Sand Shop"
-- Subtitle: "Quality construction materials for every project."
-- Short description explaining that the shop supplies reliable construction materials for homes, buildings, and other projects in Nizamabad.
-- Two buttons:
-  "View Products"
-  "Contact Us"
-- Give the hero section a premium construction-industry appearance.
-- Use a construction-themed background/design.
-- Make sure the text is easy to read.
+    nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
+    }
 
-3. PRODUCTS SECTION
-   Heading: "Our Products"
+    nav a:hover {
+      color: #a66a21;
+    }
 
-Create attractive product cards for:
+    .language {
+      display: flex;
+      gap: 6px;
+    }
 
-- Cement
-- Sand
-- Bricks
-- Construction Materials
+    .language button {
+      border: 1px solid #ddd;
+      background: white;
+      padding: 7px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+    }
 
-Each card should contain:
+    .language button.active {
+      background: #1d1d1b;
+      color: white;
+    }
 
-- A suitable icon or simple visual
-- Product name
-- Short description
-- "Enquire Now" button
+    /* HERO */
 
-Do NOT invent specific brands, prices, or product specifications.
+    .hero {
+      padding: 100px 0 90px;
+      background:
+        linear-gradient(rgba(247,247,245,0.88), rgba(247,247,245,0.95)),
+        radial-gradient(circle at 80% 20%, #e8d6bc, transparent 35%);
+    }
 
-4. WHY CHOOSE US
-   Create a section with 3–4 benefits:
+    .hero-content {
+      max-width: 760px;
+    }
 
-- Quality Materials
-- Reliable Service
-- Local Supplier
-- Customer Satisfaction
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      background: #eee8df;
+      color: #795326;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
 
-Use attractive icons and clean cards.
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
 
-5. ABOUT SECTION
-   Heading: "About Sri Lakshmi Cement & Sand Shop"
+    .hero h1 span {
+      color: #a66a21;
+    }
 
-Write a short professional description saying that the business provides construction materials to customers in and around Nizamabad and focuses on dependable materials and friendly service.
+    .hero p {
+      max-width: 600px;
+      color: #666;
+      font-size: 19px;
+      margin-bottom: 32px;
+    }
 
-Do not invent years of experience, awards, certifications, or claims that were not provided.
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-6. CONTACT SECTION
-   Heading: "Get in Touch"
+    .btn {
+      display: inline-block;
+      padding: 14px 21px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid #1d1d1b;
+      transition: 0.2s ease;
+    }
 
-Show:
-📍 Bodhan Road, Nizamabad, Telangana, India
+    .btn-primary {
+      background: #1d1d1b;
+      color: white;
+    }
 
-Add buttons for:
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #a66a21;
+      border-color: #a66a21;
+    }
 
-- Call Us
-- WhatsApp
-- Get Directions
+    .btn-secondary {
+      background: white;
+    }
 
-IMPORTANT:
-Since no phone number has been provided, DO NOT invent a phone number or WhatsApp number.
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
 
-Instead, make the buttons easy to update later, using clearly marked placeholder links such as:
-YOUR_PHONE_NUMBER
-YOUR_WHATSAPP_NUMBER
-YOUR_GOOGLE_MAPS_LINK
+    /* SECTION */
 
-7. FOOTER
-   Include:
-   Sri Lakshmi Cement & Sand Shop
-   Quality construction materials in Nizamabad.
+    section {
+      padding: 80px 0;
+    }
 
-Add navigation links and:
-© 2026 Sri Lakshmi Cement & Sand Shop. All rights reserved.
+    .section-heading {
+      margin-bottom: 35px;
+    }
 
-DESIGN:
+    .section-heading small {
+      color: #a66a21;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
 
-- Professional construction-business aesthetic
-- Strong but clean typography
-- Modern cards
-- Rounded corners
-- Subtle shadows
-- Smooth scrolling
-- Good spacing
-- Responsive layout
-- Attractive buttons
-- Mobile-first design
-- Avoid excessive animations
-- Make it look like a real local business website rather than a template/demo.
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      letter-spacing: -1.5px;
+      margin-top: 7px;
+    }
 
-TECHNICAL REQUIREMENTS:
+    .section-heading p {
+      color: #777;
+      max-width: 600px;
+      margin-top: 10px;
+    }
 
-- Everything must be contained in ONE "index.html".
-- HTML + CSS in the same file.
-- You may use an external icon library through CDN if necessary, but the website should remain functional without JavaScript.
-- Use semantic HTML.
-- Add appropriate meta tags for mobile responsiveness and SEO.
-- Add a meaningful page title and meta description.
-- Ensure good color contrast and accessibility.
-- Make all navigation links work.
-- Make the "View Products" button scroll to Products.
-- Make the "Contact Us" button scroll to Contact.
-- Add smooth scrolling.
-- Ensure there are no broken links.
-- Return ONLY the complete "index.html" code inside one code block.
+    /* PRODUCTS */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 28px;
+      min-height: 250px;
+      transition: 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    }
+
+    .product-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: #eee8df;
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      margin-bottom: 25px;
+    }
+
+    .product-card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .product-card p {
+      color: #777;
+      font-size: 15px;
+    }
+
+    /* DELIVERY */
+
+    .delivery {
+      background: #1d1d1b;
+      color: white;
+      border-radius: 20px;
+      padding: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .delivery h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .delivery p {
+      color: #cfcfcf;
+      max-width: 600px;
+    }
+
+    /* QUOTE FORM */
+
+    .form-wrapper {
+      max-width: 720px;
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 13px;
+      font: inherit;
+      outline: none;
+      background: #fafafa;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #a66a21;
+      background: white;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      margin-top: 18px;
+      width: 100%;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      background: #1d1d1b;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #a66a21;
+    }
+
+    #form-message {
+      margin-top: 15px;
+      color: #477447;
+      font-weight: 700;
+      display: none;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      background: #eee8df;
+      border-radius: 18px;
+      padding: 40px;
+    }
+
+    .contact-box p {
+      margin-top: 8px;
+      color: #555;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #1d1d1b;
+      color: white;
+      padding: 35px 0;
+      margin-top: 30px;
+    }
+
+    footer p {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 14px 0;
+      }
+
+      nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .delivery {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+  </style></head><body>  <header>
+    <div class="container nav">  <a href="#" class="logo">
+    Sri Lakshmi
+    <span>Cement & Sand Shop</span>
+  </a>
+
+  <nav>
+    <a href="#home" data-en="Home" data-te="హోమ్">Home</a>
+    <a href="#products" data-en="Products" data-te="ఉత్పత్తులు">Products</a>
+    <a href="#quote" data-en="Get a Quote" data-te="ధర తెలుసుకోండి">Get a Quote</a>
+    <a href="#contact" data-en="Contact" data-te="సంప్రదించండి">Contact</a>
+  </nav>
+
+  <div class="language">
+    <button class="active" onclick="setLanguage('en')">EN</button>
+    <button onclick="setLanguage('te')">తెలుగు</button>
+  </div>
+
+</div>
+
+  </header>  <main><section class="hero" id="home">
+  <div class="container hero-content">
+
+    <div class="eyebrow" data-en="Construction Materials" data-te="నిర్మాణ సామగ్రి">
+      Construction Materials
+    </div>
+
+    <h1 data-en="Quality materials for every build."
+        data-te="ప్రతి నిర్మాణానికి నాణ్యమైన సామగ్రి.">
+      Quality materials for every <span>build.</span>
+    </h1>
+
+    <p data-en="Reliable sand, bricks and cement for your construction needs in Nizamabad."
+       data-te="నిజామాబాద్‌లో మీ నిర్మాణ అవసరాలకు నాణ్యమైన ఇసుక, ఇటుకలు మరియు సిమెంట్.">
+      Reliable sand, bricks and cement for your construction needs in Nizamabad.
+    </p>
+
+    <div class="buttons">
+      <a href="#products" class="btn btn-primary"
+         data-en="View Products" data-te="ఉత్పత్తులు చూడండి">
+        View Products
+      </a>
+
+      <a href="#quote" class="btn btn-secondary"
+         data-en="Request a Quote" data-te="ధర తెలుసుకోండి">
+        Request a Quote
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="products">
+  <div class="container">
+
+    <div class="section-heading">
+      <small data-en="What we provide" data-te="మేము అందించేవి">
+        What we provide
+      </small>
+
+      <h2 data-en="Materials you can count on."
+          data-te="మీరు నమ్మగల నిర్మాణ సామగ్రి.">
+        Materials you can count on.
+      </h2>
+
+      <p data-en="Choose the materials you need and contact us for current pricing and availability."
+         data-te="మీకు కావలసిన సామగ్రిని ఎంచుకుని ప్రస్తుత ధరలు మరియు లభ్యత కోసం మమ్మల్ని సంప్రదించండి.">
+        Choose the materials you need and contact us for current pricing and availability.
+      </p>
+    </div>
+
+    <div class="products">
+
+      <div class="product-card">
+        <div class="product-icon">🏖️</div>
+        <h3 data-en="Sand" data-te="ఇసుక">Sand</h3>
+        <p data-en="Construction sand for a variety of building requirements."
+           data-te="వివిధ నిర్మాణ అవసరాలకు నాణ్యమైన ఇసుక.">
+          Construction sand for a variety of building requirements.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🧱</div>
+        <h3 data-en="Bricks" data-te="ఇటుకలు">Bricks</h3>
+        <p data-en="Reliable bricks for residential and construction projects."
+           data-te="ఇళ్లు మరియు ఇతర నిర్మాణ పనులకు నాణ్యమైన ఇటుకలు.">
+          Reliable bricks for residential and construction projects.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🏗️</div>
+        <h3 data-en="Cement" data-te="సిమెంట్">Cement</h3>
+        <p data-en="Cement for dependable construction and building work."
+           data-te="నమ్మకమైన నిర్మాణ పనులకు అవసరమైన సిమెంట్.">
+          Cement for dependable construction and building work.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="delivery">
+      <div>
+        <h2 data-en="Building something?"
+            data-te="మీరు నిర్మాణం చేస్తున్నారా?">
+          Building something?
+        </h2>
+
+        <p data-en="Tell us what materials you need. We can discuss availability, pricing and delivery options."
+           data-te="మీకు కావాల్సిన సామగ్రిని మాకు తెలియజేయండి. లభ్యత, ధరలు మరియు డెలివరీ వివరాలను తెలుసుకోండి.">
+          Tell us what materials you need. We can discuss availability, pricing and delivery options.
+        </p>
+      </div>
+
+      <a href="#quote" class="btn btn-secondary"
+         data-en="Request Quote" data-te="ధర తెలుసుకోండి">
+        Request Quote
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="quote">
+  <div class="container">
+
+    <div class="section-heading">
+      <small data-en="Get in touch" data-te="మమ్మల్ని సంప్రదించండి">
+        Get in touch
+      </small>
+
+      <h2 data-en="Request a quote."
+          data-te="ధర తెలుసుకోండి.">
+        Request a quote.
+      </h2>
+
+      <p data-en="Tell us what you need and we can discuss the current price and availability."
+         data-te="మీకు కావాల్సిన సామగ్రి వివరాలను పంపండి. ప్రస్తుత ధర మరియు లభ్యత గురించి మేము తెలియజేస్తాము.">
+        Tell us what you need and we can discuss the current price and availability.
+      </p>
+    </div>
+
+    <div class="form-wrapper">
+
+      <form id="quoteForm">
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label data-en="Your Name" data-te="మీ పేరు">Your Name</label>
+            <input type="text" required placeholder="Enter your name">
+          </div>
+
+          <div class="field">
+            <label data-en="Phone Number" data-te="ఫోన్ నంబర్">Phone Number</label>
+            <input type="tel" required placeholder="Enter your phone number">
+          </div>
+
+          <div class="field">
+            <label data-en="Material" data-te="సామగ్రి">Material</label>
+
+            <select required>
+              <option value="" data-en="Select material" data-te="సామగ్రిని ఎంచుకోండి">
+                Select material
+              </option>
+              <option data-en="Sand" data-te="ఇసుక">Sand</option>
+              <option data-en="Bricks" data-te="ఇటుకలు">Bricks</option>
+              <option data-en="Cement" data-te="సిమెంట్">Cement</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label data-en="Quantity" data-te="పరిమాణం">Quantity</label>
+            <input type="text" placeholder="Example: 10 bags / 1000 bricks">
+          </div>
+
+          <div class="field full">
+            <label data-en="Delivery Location" data-te="డెలివరీ ప్రదేశం">
+              Delivery Location
+            </label>
+
+            <input type="text" placeholder="Enter delivery location">
+          </div>
+
+          <div class="field full">
+            <label data-en="Additional Message" data-te="అదనపు సమాచారం">
+              Additional Message
+            </label>
+
+            <textarea placeholder="Tell us anything else we should know"></textarea>
+          </div>
+
+        </div>
+
+        <button type="submit" class="submit-btn"
+                data-en="Submit Quote Request"
+                data-te="ధర కోసం అభ్యర్థన పంపండి">
+          Submit Quote Request
+        </button>
+
+        <div id="form-message">
+          Your request has been prepared. We will contact you soon.
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+
+    <div class="contact-box">
+
+      <h2 data-en="Visit or contact us"
+          data-te="మమ్మల్ని సంప్రదించండి">
+        Visit or contact us
+      </h2>
+
+      <p>
+        📍 <strong data-en="Location" data-te="ప్రదేశం">Location</strong>
+      </p>
+
+      <p data-en="Bodhan Road, Nizamabad, Telangana, India"
+         data-te="బోధన్ రోడ్, నిజామాబాద్, తెలంగాణ, భారతదేశం">
+        Bodhan Road, Nizamabad, Telangana, India
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+  </main>  <footer>
+    <div class="container">
+      <p>
+        © 2026 Sri Lakshmi Cement & Sand Shop. All rights reserved.
+      </p>
+    </div>
+  </footer>  <script>
+
+    function setLanguage(language) {
+
+      const elements = document.querySelectorAll("[data-en]");
+
+      elements.forEach(function(element) {
+
+        if (language === "te") {
+          element.textContent = element.getAttribute("data-te");
+        } else {
+          element.textContent = element.getAttribute("data-en");
+        }
+
+      });
+
+      document.querySelectorAll(".language button").forEach(function(button) {
+        button.classList.remove("active");
+      });
+
+      if (language === "te") {
+        document.querySelectorAll(".language button")[1].classList.add("active");
+      } else {
+        document.querySelectorAll(".language button")[0].classList.add("active");
+      }
+    }
+
+
+    document.getElementById("quoteForm").addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const message = document.getElementById("form-message");
+
+      message.style.display = "block";
+
+      this.reset();
+
+    });
+
+  </script></body>
+</html>
