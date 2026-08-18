@@ -1,1 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Dimpi's Little World ✦</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  background:#120c18;
+  color:#fff7fb;
+  overflow-x:hidden;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.screen{
+  min-height:100vh;
+  width:100%;
+  display:none;
+  position:relative;
+  overflow:hidden;
+}
+
+.screen.active{
+  display:flex;
+  animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MUSIC */
+
+.music{
+  position:fixed;
+  right:15px;
+  top:15px;
+  z-index:100;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(20,10,25,.65);
+  color:white;
+  padding:9px 13px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+}
+
+/* INTRO */
+
+#intro{
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(255,190,220,.16),transparent 35%),
+    linear-gradient(135deg,#160d1e,#32162e,#100b17);
+}
+
+.stars{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:.7;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.15}
+  to{opacity:1}
+}
+
+.door-wrap{
+  text-align:center;
+  z-index:2;
+}
+
+.small-title{
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:12px;
+  opacity:.65;
+  margin-bottom:20px;
+}
+
+.door{
+  width:210px;
+  height:310px;
+  margin:auto;
+  border-radius:110px 110px 12px 12px;
+  background:linear-gradient(135deg,#d887aa,#733e6b);
+  border:3px solid rgba(255,255,255,.35);
+  box-shadow:0 0 60px rgba(255,130,190,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:1.4s ease;
+  position:relative;
+}
+
+.door:after{
+  content:"";
+  width:9px;
+  height:9px;
+  background:#ffd5e7;
+  border-radius:50%;
+  position:absolute;
+  right:24px;
+  top:155px;
+}
+
+.door.open{
+  transform:perspective(800px) rotateY(-78deg);
+  transform-origin:left;
+  opacity:.1;
+}
+
+.door-text{
+  font-size:20px;
+  letter-spacing:2px;
+}
+
+.enter-btn{
+  margin-top:30px;
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.08);
+  color:white;
+  padding:13px 28px;
+  border-radius:30px;
+  backdrop-filter:blur(10px);
+  transition:.3s;
+}
+
+.enter-btn:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.15);
+}
+
+/* COMMON */
+
+.content{
+  width:min(920px,92%);
+  margin:auto;
+  text-align:center;
+  z-index:2;
+}
+
+.section-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:4px;
+  opacity:.55;
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:clamp(34px,8vw,70px);
+  font-weight:400;
+  margin-bottom:15px;
+}
+
+h2{
+  font-size:clamp(27px,6vw,48px);
+  font-weight:400;
+  margin-bottom:14px;
+}
+
+p{
+  line-height:1.7;
+  opacity:.82;
+}
+
+.next-btn{
+  margin-top:28px;
+  padding:12px 25px;
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,.3);
+  color:white;
+  background:rgba(255,255,255,.08);
+  transition:.3s;
+}
+
+.next-btn:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.16);
+}
+
+/* SCRAPBOOK */
+
+#scrapbook{
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#251324,#160c1b);
+}
+
+.polaroids{
+  height:400px;
+  position:relative;
+  margin:25px auto;
+  max-width:500px;
+}
+
+.polaroid{
+  position:absolute;
+  width:180px;
+  background:#fff;
+  padding:10px 10px 35px;
+  color:#222;
+  box-shadow:0 15px 35px rgba(0,0,0,.35);
+  transition:.5s;
+}
+
+.polaroid img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  display:block;
+  background:#ddd;
+}
+
+.polaroid span{
+  display:block;
+  margin-top:9px;
+  font-size:12px;
+}
+
+.p1{
+  left:2%;
+  top:35px;
+  transform:rotate(-8deg);
+}
+
+.p2{
+  left:34%;
+  top:5px;
+  transform:rotate(5deg);
+}
+
+.p3{
+  right:2%;
+  top:70px;
+  transform:rotate(-4deg);
+}
+
+.p4{
+  left:22%;
+  top:150px;
+  transform:rotate(-2deg);
+}
+
+.polaroid:hover{
+  transform:rotate(0deg) scale(1.07);
+  z-index:5;
+}
+
+/* LITTLE WORLD */
+
+#littleworld{
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,184,215,.1),transparent 30%),
+    linear-gradient(145deg,#1d1022,#32152f);
+}
+
+.room{
+  position:relative;
+  width:min(700px,94vw);
+  height:420px;
+  margin:25px auto;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:25px;
+  background:
+    linear-gradient(to bottom,#33213b 0 68%,#8a5375 68% 100%);
+  overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,.4);
+}
+
+.window{
+  position:absolute;
+  left:9%;
+  top:12%;
+  width:160px;
+  height:130px;
+  border:7px solid #d8a6bd;
+  background:linear-gradient(#60416b,#d57b9c);
+}
+
+.window:after{
+  content:"✦  ✧  ·  ✦";
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  color:#fff;
+}
+
+.bed{
+  position:absolute;
+  bottom:19%;
+  left:20%;
+  width:330px;
+  height:90px;
+  border-radius:35px 35px 15px 15px;
+  background:#e9b5cc;
+}
+
+.pillow{
+  position:absolute;
+  left:25px;
+  top:-30px;
+  width:100px;
+  height:55px;
+  border-radius:20px;
+  background:#ffe8f1;
+}
+
+.cat{
+  position:absolute;
+  right:10%;
+  bottom:18%;
+  font-size:65px;
+  filter:drop-shadow(0 10px 10px rgba(0,0,0,.2));
+}
+
+.room-item{
+  position:absolute;
+  border:0;
+  background:rgba(255,255,255,.12);
+  color:white;
+  padding:8px 12px;
+  border-radius:15px;
+  backdrop-filter:blur(5px);
+}
+
+.room-item:hover{
+  background:rgba(255,255,255,.25);
+}
+
+.item1{
+  left:7%;
+  bottom:7%;
+}
+
+.item2{
+  right:7%;
+  top:8%;
+}
+
+.item3{
+  right:17%;
+  bottom:8%;
+}
+
+.room-message{
+  min-height:35px;
+  margin-top:10px;
+  font-style:italic;
+}
+
+/* GYM */
+
+#gym{
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#111116,#251a27);
+}
+
+.pr-card{
+  width:min(500px,90%);
+  margin:25px auto;
+  padding:28px;
+  border-radius:25px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.weight{
+  font-size:60px;
+  margin:15px 0;
+}
+
+.bar{
+  width:100%;
+  height:12px;
+  border-radius:20px;
+  background:#332c37;
+  overflow:hidden;
+}
+
+.bar-fill{
+  width:10%;
+  height:100%;
+  background:#ed9ac2;
+  transition:.2s;
+}
+
+.pr-btn{
+  margin-top:20px;
+  padding:13px 25px;
+  border:0;
+  border-radius:30px;
+  background:#ed9ac2;
+  color:#24121e;
+  font-weight:bold;
+}
+
+.gym-comment{
+  margin-top:18px;
+  min-height:50px;
+}
+
+/* STRAWBERRY */
+
+#strawberry{
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#321521,#160b14);
+}
+
+.berry-area{
+  position:relative;
+  height:300px;
+  width:min(600px,90vw);
+  margin:15px auto;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:25px;
+  overflow:hidden;
+  background:rgba(255,255,255,.03);
+}
+
+.berry{
+  position:absolute;
+  border:0;
+  background:none;
+  font-size:35px;
+  animation:float 2s ease-in-out infinite alternate;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(4px) rotate(-5deg);
+  }
+  to{
+    transform:translateY(-7px) rotate(5deg);
+  }
+}
+
+.score{
+  font-size:25px;
+  margin-top:10px;
+}
+
+/* LANA */
+
+#lana{
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(rgba(15,7,17,.6),rgba(15,7,17,.8)),
+    radial-gradient(circle at 70% 30%,#69475d,#160b16 60%);
+}
+
+.lana-card{
+  width:min(600px,90%);
+  padding:40px 25px;
+  border-radius:30px;
+  background:rgba(0,0,0,.25);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* TRAVEL */
+
+#travel{
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(130,170,255,.12),transparent 35%),
+    linear-gradient(145deg,#0d1221,#16101d);
+}
+
+.destination-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  width:min(800px,94%);
+  margin:30px auto;
+}
+
+.destination{
+  min-height:150px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:22px;
+  background:rgba(255,255,255,.06);
+  color:white;
+  padding:20px;
+  transition:.35s;
+}
+
+.destination:hover{
+  transform:translateY(-8px);
+  background:rgba(255,255,255,.11);
+}
+
+.destination .flag{
+  font-size:35px;
+}
+
+.passport{
+  width:min(500px,90%);
+  margin:20px auto;
+  perspective:1000px;
+  display:none;
+}
+
+.passport.open{
+  display:block;
+  animation:passportIn .9s ease;
+}
+
+@keyframes passportIn{
+  from{
+    opacity:0;
+    transform:translateY(80px) rotateX(40deg);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) rotateX(0);
+  }
+}
+
+.passport-book{
+  background:#7c3158;
+  border:3px solid #d99ab8;
+  border-radius:14px;
+  min-height:280px;
+  padding:28px;
+  box-shadow:0 25px 50px rgba(0,0,0,.5);
+}
+
+.passport-title{
+  letter-spacing:5px;
+  font-size:12px;
+  opacity:.7;
+}
+
+.passport-photo{
+  margin:25px auto 15px;
+  width:110px;
+  height:130px;
+  border:6px solid #f8e9ef;
+  background:#ddd;
+  overflow:hidden;
+}
+
+.passport-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.stamp{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 15px;
+  border:3px solid #f1b5cc;
+  color:#f1b5cc;
+  font-weight:bold;
+  transform:rotate(-8deg) scale(0);
+  opacity:0;
+}
+
+.stamp.show{
+  animation:stamp .5s ease forwards;
+}
+
+@keyframes stamp{
+  0%{
+    transform:rotate(-15deg) scale(2);
+    opacity:0;
+  }
+  70%{
+    transform:rotate(-8deg) scale(.9);
+    opacity:1;
+  }
+  100%{
+    transform:rotate(-8deg) scale(1);
+    opacity:1;
+  }
+}
+
+.places{
+  margin-top:25px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
+
+.place{
+  padding:10px 16px;
+  border-radius:20px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* GIFT */
+
+#gift{
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(255,170,210,.14),transparent 35%),
+    linear-gradient(145deg,#261020,#120a15);
+}
+
+.gift-box{
+  font-size:130px;
+  transition:.5s;
+  filter:drop-shadow(0 20px 25px rgba(0,0,0,.4));
+}
+
+.gift-box:hover{
+  transform:scale(1.06);
+}
+
+.gift-message{
+  margin-top:20px;
+  min-height:70px;
+}
+
+.confirm{
+  margin-top:15px;
+  display:none;
+  gap:12px;
+  justify-content:center;
+  position:relative;
+  min-height:60px;
+}
+
+.confirm button{
+  padding:10px 22px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,.25);
+  color:white;
+  background:rgba(255,255,255,.08);
+}
+
+#noBtn{
+  position:relative;
+}
+
+/* END */
+
+#ending{
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(255,180,220,.15),transparent 40%),
+    #0d0910;
+}
+
+.final-note{
+  width:min(650px,90%);
+  margin:20px auto;
+  font-size:18px;
+  line-height:2;
+}
+
+.signature{
+  margin-top:30px;
+  opacity:.7;
+  font-style:italic;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .door{
+    width:170px;
+    height:260px;
+  }
+
+  .polaroids{
+    transform:scale(.8);
+    margin-top:-20px;
+  }
+
+  .room{
+    height:350px;
+  }
+
+  .bed{
+    width:250px;
+  }
+
+  .destination-grid{
+    grid-template-columns:1fr;
+  }
+
+  .destination{
+    min-height:110px;
+  }
+
+  .berry-area{
+    height:260px;
+  }
+
+}
+</style>
+</head>
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="assets/snowfall.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music" onclick="toggleMusic()">♫ Music</button>
+
+
+<!-- ================= INTRO ================= -->
+
+<section id="intro" class="screen active">
+
+  <div class="stars">
+    <i class="star" style="left:10%;top:15%"></i>
+    <i class="star" style="left:20%;top:70%"></i>
+    <i class="star" style="left:30%;top:25%"></i>
+    <i class="star" style="left:45%;top:12%"></i>
+    <i class="star" style="left:60%;top:70%"></i>
+    <i class="star" style="left:75%;top:25%"></i>
+    <i class="star" style="left:88%;top:65%"></i>
+  </div>
+
+  <div class="door-wrap">
+
+    <div class="small-title">
+      A tiny place made for you
+    </div>
+
+    <div id="door" class="door">
+      <div class="door-text">
+        knock knock ✦
+      </div>
+    </div>
+
+    <button class="enter-btn" onclick="openDoor()">
+      Open the door
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SCRAPBOOK ================= -->
+
+<section id="scrapbook" class="screen">
+
+  <div class="content">
+
+    <div class="section-label">
+      chapter one
+    </div>
+
+    <h2>
+      A little scrapbook
+    </h2>
+
+    <p>
+      Some moments deserve their own tiny corner of the internet.
+    </p>
+
+    <div class="polaroids">
+
+      <div class="polaroid p1">
+        <img src="assets/photo1.jpg" alt="photo">
+        <span>
+          ✦ one little moment
+        </span>
+      </div>
+
+      <div class="polaroid p2">
+        <img src="assets/photo2.jpg" alt="photo">
+        <span>
+          ♡ main character energy
+        </span>
+      </div>
+
+      <div class="polaroid p3">
+        <img src="assets/photo3.jpg" alt="photo">
+        <span>
+          ✧ caught in the moment
+        </span>
+      </div>
+
+      <div class="polaroid p4">
+        <img src="assets/photo4.jpg" alt="photo">
+        <span>
+          storing this one here
+        </span>
+      </div>
+
+    </div>
+
+    <button class="next-btn" onclick="go('littleworld')">
+      Enter the little world →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= LITTLE WORLD ================= -->
+
+<section id="littleworld" class="screen">
+
+  <div class="content">
+
+    <div class="section-label">
+      chapter two
+    </div>
+
+    <h2>
+      Welcome to the little world ✦
+    </h2>
+
+    <p>
+      There are a few things hiding around here.
+      You might as well investigate.
+    </p>
+
+    <div class="room">
+
+      <div class="window"></div>
+
+      <div class="bed">
+        <div class="pillow"></div>
+      </div>
+
+      <div class="cat">
+        🎀🐱
+      </div>
+
+      <button
+        class="room-item item1"
+        onclick="roomMessage('Someone definitely needs a strawberry ice cream break.')">
+        🍓
+      </button>
+
+      <button
+        class="room-item item2"
+        onclick="roomMessage('Nothing suspicious here. Definitely. 👀')">
+        ✨
+      </button>
+
+      <button
+        class="room-item item3"
+        onclick="roomMessage('Okay fine... this room is officially yours for a minute.')">
+        🧸
+      </button>
+
+    </div>
+
+    <div id="roomMessage" class="room-message"></div>
+
+    <button
+      class="next-btn"
+      onclick="go('gym')">
+      I found everything... probably →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= GYM ================= -->
+
+<section id="gym" class="screen">
+
+  <div class="content">
+
+    <div class="section-label">
+      chapter three
+    </div>
+
+    <h2>
+      The leg press incident 💀
+    </h2>
+
+    <p>
+      You said you had the better PR.
+      She disagreed.
+    </p>
+
+    <div class="pr-card">
+
+      <div>
+        Your PR
+      </div>
+
+      <div id="weight" class="weight">
+        0 kg
+      </div>
+
+      <div class="bar">
+        <div id="barFill" class="bar-fill"></div>
+      </div>
+
+      <button
+        class="pr-btn"
+        onclick="increasePR()">
+        Add 10 kg
+      </button>
+
+      <div id="gymComment" class="gym-comment">
+        Let's see how far this goes...
+      </div>
+
+    </div>
+
+    <button
+      class="next-btn"
+      onclick="go('strawberry')">
+      Accept defeat gracefully → 😂
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= STRAWBERRY ================= -->
+
+<section id="strawberry" class="screen">
+
+  <div class="content">
+
+    <div class="section-label">
+      tiny game
+    </div>
+
+    <h2>
+      Strawberry break 🍓
+    </h2>
+
+    <p>
+      Catch a few. Don't overdo it.
+    </p>
+
+    <div
+      id="berryArea"
+      class="berry-area">
+    </div>
+
+    <div class="score">
+      Strawberries:
+      <span id="score">0</span>/5
+    </div>
+
+    <button
+      class="next-btn"
+      onclick="go('lana')">
+      Okay, enough strawberries →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= LANA ================= -->
+
+<section id="lana" class="screen">
+
+  <div class="content">
+
+    <div class="section-label">
+      chapter four
+    </div>
+
+    <h2>
+      For the Lana moment 🎧
+    </h2>
+
+    <div class="lana-card">
+
+      <p style="font-size:20px">
+        Sometimes the vibe doesn't need an explanation.
+      </p>
+
+      <br>
+
+      <p>
+        Just put on the headphones, stare out the window
+        and pretend you're in the opening scene of a movie.
+      </p>
+
+      <br>
+
+      <p>
+        Obviously this is completely normal behaviour.
+        Definitely not dramatic. 😭
+      </p>
+
+    </div>
+
+    <button
+      class="next-btn"
+      onclick="go('travel')">
+      Let's travel →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= TRAVEL ================= -->
+
+<section id="travel" class="screen">
+
+  <div class="content">
+
+    <div class="section-label">
+      chapter five
+    </div>
+
+    <h2>
+      Where are we going?
+    </h2>
+
+    <p>
+      Pick anywhere. The passport doesn't judge.
+    </p>
+
+    <div
+      id="destinationGrid"
+      class="destination-grid">
+
+      <button
+        class="destination"
+        onclick="chooseDestination('India')">
+
+        <div class="flag">
+          🇮🇳
+        </div>
+
+        <strong>
+          India
+        </strong>
+
+        <p>
+          little adventures
+        </p>
+
+      </button>
+
+
+      <button
+        class="destination"
+        onclick="chooseDestination('America')">
+
+        <div class="flag">
+          🇺🇸
+        </div>
+
+        <strong>
+          America
+        </strong>
+
+        <p>
+          main character roads
+        </p>
+
+      </button>
+
+
+      <button
+        class="destination"
+        onclick="chooseDestination('Japan')">
+
+        <div class="flag">
+          🇯🇵
+        </div>
+
+        <strong>
+          Japan
+        </strong>
+
+        <p>
+          somewhere magical
+        </p>
+
+      </button>
+
+    </div>
+
+
+    <!-- PASSPORT -->
+
+    <div
+      id="passport"
+      class="passport">
+
+      <div class="passport-book">
+
+        <div class="passport-title">
+          LITTLE WORLD PASSPORT
+        </div>
+
+        <div class="passport-photo">
+
+          <img
+            id="passportPhoto"
+            src="assets/photo5.jpg"
+            alt="passport photo">
+
+        </div>
+
+        <h2 id="passportDestination">
+          Destination
+        </h2>
+
+        <div
+          id="stamp"
+          class="stamp">
+          ENTERED
+        </div>
+
+        <div
+          id="places"
+          class="places">
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="travelNext"
+      class="next-btn"
+      style="display:none"
+      onclick="go('gift')">
+
+      Continue the journey →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MYSTERY GIFT ================= -->
+
+<section id="gift" class="screen">
+
+  <div class="content">
+
+    <div class="section-label">
+      final chapter
+    </div>
+
+    <h2>
+      A mystery gift 🎁
+    </h2>
+
+    <p>
+      There's something inside.
+    </p>
+
+    <div
+      class="gift-box"
+      onclick="openGift()">
+      🎁
+    </div>
+
+    <div
+      id="giftMessage"
+      class="gift-message">
+    </div>
+
+
+    <div
+      id="confirm"
+      class="confirm">
+
+      <button onclick="giftYes()">
+        Yes
+      </button>
+
+      <button
+        id="noBtn"
+        onclick="moveNo()">
+        No
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ENDING ================= -->
+
+<section id="ending" class="screen">
+
+  <div class="content">
+
+    <div class="section-label">
+      end credits
+    </div>
+
+    <h1>
+      That's it. ✦
+    </h1>
+
+    <div class="final-note">
+
+      <p>
+        No big speech.
+        No complicated explanation.
+      </p>
+
+      <br>
+
+      <p>
+        Just a tiny little world,
+        made because you deserve something
+        that feels a little different.
+      </p>
+
+      <br>
+
+      <p>
+        Hope it made you smile. :)
+      </p>
+
+      <div class="signature">
+        — from someone who pays way too much attention 😭
+      </div>
+
+    </div>
+
+    <button
+      class="next-btn"
+      onclick="go('intro')">
+
+      Replay ↻
+
+    </button>
+
+  </div>
+
+</section>
+<script>
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function go(id){
+
+  document.querySelectorAll(".screen").forEach(function(screen){
+
+    screen.classList.remove("active");
+
+  });
+
+  const target = document.getElementById(id);
+
+  if(target){
+
+    target.classList.add("active");
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const music = document.getElementById("music");
+
+function toggleMusic(){
+
+  if(!music){
+    return;
+  }
+
+  if(music.paused){
+
+    music.play().catch(function(){
+
+      alert(
+        "Add snowfall.mp3 inside the assets folder first."
+      );
+
+    });
+
+  }else{
+
+    music.pause();
+
+  }
+
+}
+
+
+/* =========================
+   DOOR ANIMATION
+========================= */
+
+function openDoor(){
+
+  const door =
+    document.getElementById("door");
+
+  if(!door){
+    return;
+  }
+
+  door.classList.add("open");
+
+  setTimeout(function(){
+
+    go("scrapbook");
+
+  },1100);
+
+}
+
+
+/* =========================
+   LITTLE WORLD
+========================= */
+
+function roomMessage(text){
+
+  const message =
+    document.getElementById("roomMessage");
+
+  if(message){
+
+    message.textContent = text;
+
+  }
+
+}
+
+
+/* =========================
+   LEG PRESS MINI GAME
+========================= */
+
+let pr = 0;
+
+function increasePR(){
+
+  pr += 10;
+
+  const weight =
+    document.getElementById("weight");
+
+  const bar =
+    document.getElementById("barFill");
+
+  const comment =
+    document.getElementById("gymComment");
+
+
+  if(weight){
+
+    weight.textContent =
+      pr + " kg";
+
+  }
+
+
+  if(bar){
+
+    bar.style.width =
+      Math.min(pr / 2,100) + "%";
+
+  }
+
+
+  let text = "";
+
+
+  if(pr < 100){
+
+    text =
+      "Okay okay... warm-up. 😭";
+
+  }
+
+  else if(pr < 150){
+
+    text =
+      "Wait... you're actually serious?";
+
+  }
+
+  else if(pr < 200){
+
+    text =
+      "BRO SHE'S STILL AHEAD 💀";
+
+  }
+
+  else if(pr < 250){
+
+    text =
+      "At this point we're fighting for our lives 😭";
+
+  }
+
+  else{
+
+    text =
+      "Fine. We'll call this a draw. 💀";
+
+  }
+
+
+  if(comment){
+
+    comment.textContent = text;
+
+  }
+
+}
+
+
+/* =========================
+   STRAWBERRY MINI GAME
+========================= */
+
+let score = 0;
+
+function spawnBerry(){
+
+  if(score >= 5){
+    return;
+  }
+
+
+  const area =
+    document.getElementById("berryArea");
+
+  if(!area){
+    return;
+  }
+
+
+  const berry =
+    document.createElement("button");
+
+  berry.className =
+    "berry";
+
+  berry.textContent =
+    "🍓";
+
+
+  berry.style.left =
+    (Math.random() * 82 + 5) + "%";
+
+  berry.style.top =
+    (Math.random() * 68 + 8) + "%";
+
+
+  berry.onclick = function(){
+
+    score++;
+
+
+    const scoreText =
+      document.getElementById("score");
+
+    if(scoreText){
+
+      scoreText.textContent =
+        score;
+
+    }
+
+
+    berry.remove();
+
+
+    if(score < 5){
+
+      setTimeout(
+        spawnBerry,
+        400
+      );
+
+    }
+
+  };
+
+
+  area.appendChild(berry);
+
+}
+
+
+/* Start first strawberry */
+
+spawnBerry();
+
+
+/* =========================
+   TRAVEL DESTINATIONS
+========================= */
+
+const destinations = {
+
+  India:{
+
+    emoji:"🇮🇳",
+
+    places:[
+      "Hyderabad",
+      "Kerala",
+      "Tamil Nadu"
+    ]
+
+  },
+
+
+  America:{
+
+    emoji:"🇺🇸",
+
+    places:[
+      "Los Angeles",
+      "New York",
+      "California"
+    ]
+
+  },
+
+
+  Japan:{
+
+    emoji:"🇯🇵",
+
+    places:[
+      "Tokyo",
+      "Shibuya",
+      "Kyoto"
+    ]
+
+  }
+
+};
+
+
+/* =========================
+   PASSPORT
+========================= */
+
+function chooseDestination(country){
+
+  const data =
+    destinations[country];
+
+  if(!data){
+    return;
+  }
+
+
+  const grid =
+    document.getElementById(
+      "destinationGrid"
+    );
+
+
+  const passport =
+    document.getElementById(
+      "passport"
+    );
+
+
+  const destination =
+    document.getElementById(
+      "passportDestination"
+    );
+
+
+  const photo =
+    document.getElementById(
+      "passportPhoto"
+    );
+
+
+  const stamp =
+    document.getElementById(
+      "stamp"
+    );
+
+
+  const places =
+    document.getElementById(
+      "places"
+    );
+
+
+  const next =
+    document.getElementById(
+      "travelNext"
+    );
+
+
+  /* Hide destination cards */
+
+  if(grid){
+
+    grid.style.display =
+      "none";
+
+  }
+
+
+  /* Show passport */
+
+  if(passport){
+
+    passport.classList.add(
+      "open"
+    );
+
+  }
+
+
+  /* Destination name */
+
+  if(destination){
+
+    destination.textContent =
+      country;
+
+  }
+
+
+  /* Passport photo */
+
+  if(photo){
+
+    photo.src =
+      "assets/photo5.jpg";
+
+  }
+
+
+  /* Reset stamp */
+
+  if(stamp){
+
+    stamp.classList.remove(
+      "show"
+    );
+
+  }
+
+
+  /*
+    Create the physical-style
+    destination stamp
+  */
+
+  setTimeout(function(){
+
+    if(stamp){
+
+      stamp.textContent =
+        data.emoji +
+        " " +
+        country.toUpperCase();
+
+      stamp.classList.add(
+        "show"
+      );
+
+    }
+
+  },600);
+
+
+  /* Clear old locations */
+
+  if(places){
+
+    places.innerHTML = "";
+
+
+    data.places.forEach(
+      function(place){
+
+        const location =
+          document.createElement(
+            "div"
+          );
+
+        location.className =
+          "place";
+
+        location.textContent =
+          "📍 " + place;
+
+        places.appendChild(
+          location
+        );
+
+      }
+    );
+
+  }
+
+
+  /* Show next button */
+
+  if(next){
+
+    next.style.display =
+      "inline-block";
+
+  }
+
+}
+
+
+/* =========================
+   MYSTERY GIFT
+========================= */
+
+function openGift(){
+
+  const message =
+    document.getElementById(
+      "giftMessage"
+    );
+
+
+  const confirm =
+    document.getElementById(
+      "confirm"
+    );
+
+
+  if(message){
+
+    message.innerHTML =
+      "Okay... before opening it..." +
+      "<br><br>" +
+      "<strong>Are you sure?</strong>";
+
+  }
+
+
+  if(confirm){
+
+    confirm.style.display =
+      "flex";
+
+  }
+
+}
+
+
+/* =========================
+   YES BUTTON
+========================= */
+
+function giftYes(){
+
+  const message =
+    document.getElementById(
+      "giftMessage"
+    );
+
+
+  const confirm =
+    document.getElementById(
+      "confirm"
+    );
+
+
+  if(message){
+
+    message.innerHTML =
+      "Good choice. ✦" +
+      "<br><br>" +
+      "Your actual gift is this little world.";
+
+  }
+
+
+  if(confirm){
+
+    confirm.style.display =
+      "none";
+
+  }
+
+
+  setTimeout(function(){
+
+    go("ending");
+
+  },2800);
+
+}
+
+
+/* =========================
+   MOVING NO BUTTON 😂
+========================= */
+
+function moveNo(){
+
+  const no =
+    document.getElementById(
+      "noBtn"
+    );
+
+
+  if(!no){
+    return;
+  }
+
+
+  const x =
+    Math.random() * 160 - 80;
+
+
+  const y =
+    Math.random() * 100 - 50;
+
+
+  no.style.transform =
+    "translate(" +
+    x +
+    "px," +
+    y +
+    "px)";
+
+}
+
+
+/* =========================
+   IMAGE FALLBACK
+========================= */
+
+document.querySelectorAll(
+  "img"
+).forEach(function(img){
+
+  img.onerror =
+    function(){
+
+      this.style.background =
+        "linear-gradient(135deg,#f3c2d8,#7d456d)";
+
+      this.alt =
+        "Your photo goes here ✦";
+
+    };
+
+});
+
+
+</script>
+
+</body>
+</html>
